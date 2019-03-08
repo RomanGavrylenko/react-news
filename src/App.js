@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header';
+import {getMainNews} from './services/api';
 
 class App extends Component {
+
+  state={
+    data:[],
+    category: 'business',
+    top: true,
+  }
+
+  //get data for main page
+  async componentDidMount(){
+    let news = await getMainNews();
+    console.log(news);
+
+    this.setState({
+      data: news,
+    })
+  }
+
+  //test for category
+  getCategory = async ()=>{
+    let data = await getMainNews(this.state.category);
+
+    console.log(data);
+  }
+
   render() {
+
+    const items = ['Главная', "Бизнес", "Спорт", "Технологии", "Наука", "Здоровье"];
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header items={items}/>
       </div>
     );
   }
