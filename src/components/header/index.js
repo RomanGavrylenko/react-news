@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 export default function Header(props){
     return(
@@ -8,9 +9,10 @@ export default function Header(props){
                     return(
                     <li className='header__nav-item'
                         key={item}
-                        data-item={item}
+                        data-item={item.attr}
+                        onClick={props.handle}
                     >
-                        {item}
+                        {item.name}
                     </li>
                     );
                 })}

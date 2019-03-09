@@ -8,13 +8,13 @@ class App extends Component {
 
   state={
     data:[],
-    category: 'business',
+    category: '',
     top: true,
   }
 
   //get data for main page
   async componentDidMount(){
-    let news = await getMainNews();
+    let news = await getMainNews(this.state.category);
     console.log(news);
 
     this.setState({
@@ -23,19 +23,38 @@ class App extends Component {
   }
 
   //test for category
-  getCategory = async ()=>{
+  handleCategory = (e)=>{
+    console.log(e.target.getAttribute('data-item'));
+    this.setState({
+      category: e.target.getAttribute('data-item'),
+    }, this.getCategory);
+    /*let data = await getMainNews(this.state.category);
+
+    console.log(data);*/
+  }
+
+  getCategory = async()=>{
     let data = await getMainNews(this.state.category);
 
-    console.log(data);
+    this.setState({
+      data
+    });
   }
 
   render() {
 
-    const items = ['Главная', "Бизнес", "Спорт", "Технологии", "Наука", "Здоровье"];
+    const items = [
+      {name:'Главная', attr: ''},
+      {name: "Бизнес", attr: 'business'},
+      {name:"Спорт", attr: 'sports'},
+      {name: "Технологии", attr: 'technology'},
+      {name: "Наука", attr: 'science'},
+      {name: "Здоровье", attr: 'headlth'},
+      {name: "Развлечения", attr: "entertainment"}];
 
     return (
       <div className="App">
-        <Header items={items}/>
+        <Header items={items} handle={this.handleCategory}/>
         <NewsList data={this.state.data}/>
       </div>
     );

@@ -17,10 +17,7 @@ function makeRequest(url, options={}){
 }
 
 export async function getMainNews(category = '', country='ua'){
-    let addCategory='';
-    if(category){
-        addCategory=`&category=${category}`
-    }
+    let addCategory= category ?  `&category=${category}` : '';
     let mainNews = await makeRequest(`${BASE_URL}top-headlines?country=${country}${addCategory}`, {
         headers: {
             ...HEADER
