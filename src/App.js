@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/header';
+import NewsList from './components/newsList/newsList';
 import {getMainNews} from './services/api';
+
 
 class App extends Component {
 
@@ -34,6 +36,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header items={items}/>
+        <NewsList data={this.state.data}/>
       </div>
     );
   }
