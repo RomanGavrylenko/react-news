@@ -1,6 +1,8 @@
 import React from 'react';
 import SingleNews from './singleNews';
 import './news-list.css';
+import PropTypes from 'prop-types';
+
 
 export default class NewsList extends React.Component{
 
@@ -19,4 +21,8 @@ export default class NewsList extends React.Component{
             </div>
         );
     }
+}
+
+NewsList.prototype ={
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

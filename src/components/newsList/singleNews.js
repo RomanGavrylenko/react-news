@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function SingleNews({data: {url, urlToImage, title, description, publishedAt}}){
 
@@ -30,3 +31,14 @@ export default function SingleNews({data: {url, urlToImage, title, description, 
         </div>
     );
 }
+
+SingleNews.prototype = {
+    data: PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        urlToImage: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        publishedAt: PropTypes.string.isRequired,
+    })
+}
+url, urlToImage, title, description, publishedAt
