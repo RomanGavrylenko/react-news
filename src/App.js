@@ -4,6 +4,7 @@ import NewsList from './components/newsList/newsList';
 import WeatherWidgetView from './components/weatherView/weatherWidgetView';
 import Filters from './components/Filters/filters';
 import UserProfileWidgetView from './components/user-profiles/userProfileWidgetView'
+import Content from './layout/content';
 import {getNews} from './services/newsApi';
 
 
@@ -28,7 +29,8 @@ class App extends Component {
     })
   }
 
-  
+  //change category at state and re-render component
+
   handleCategory = (e)=>{
     console.log(e.target.getAttribute('data-item'));
     this.setState({
@@ -36,6 +38,8 @@ class App extends Component {
     }, this.getCategory);
     
   }
+
+  //change data for showing
 
   getCategory = async()=>{
     const {top, category, count} = this.state;
@@ -68,12 +72,12 @@ class App extends Component {
     return (
       <div className="App">
         <Header items={items} handle={this.handleCategory}/>
-        <button >city</button>
-        <Filters handleCount = {this.handleCount}/>
-        <UserProfileWidgetView />
-        <NewsList data={this.state.data}/>
-        <WeatherWidgetView />
-        
+        <Content 
+            leftOne = {<UserProfileWidgetView />}
+            leftTwo = {<Filters handleCount = {this.handleCount}/>}
+            leftThree = {<WeatherWidgetView />}
+            main = {<NewsList data={this.state.data}/>}
+        />
       </div>
     );
   }
