@@ -23,6 +23,6 @@ export default class NewsList extends React.Component{
     }
 }
 
-NewsList.prototype ={
+NewsList.propTypes ={
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

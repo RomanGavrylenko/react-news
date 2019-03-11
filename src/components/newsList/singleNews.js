@@ -39,6 +39,5 @@ SingleNews.prototype = {
         title: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         publishedAt: PropTypes.string.isRequired,
-    })
+    }),
 }
-url, urlToImage, title, description, publishedAt

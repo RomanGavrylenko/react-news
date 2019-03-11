@@ -3,6 +3,7 @@ import Header from './components/header';
 import NewsList from './components/newsList/newsList';
 import WeatherWidgetView from './components/weatherView/weatherWidgetView';
 import Filters from './components/Filters/filters';
+import UserProfileWidgetView from './components/user-profiles/userProfileWidgetView'
 import {getNews} from './services/newsApi';
 
 
@@ -69,6 +70,7 @@ class App extends Component {
         <Header items={items} handle={this.handleCategory}/>
         <button >city</button>
         <Filters handleCount = {this.handleCount}/>
+        <UserProfileWidgetView />
         <NewsList data={this.state.data}/>
         <WeatherWidgetView />
         
