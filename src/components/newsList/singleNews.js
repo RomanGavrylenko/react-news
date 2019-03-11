@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function SingleNews({data: {url, urlToImage, title, description, publishedAt}}){
 
-    let date = publishedAt.replace(/(T|Z)/g, ' ');
+    let date = new Date(publishedAt).toLocaleString();
 
     return(
         <div className='news-list__news-card'>

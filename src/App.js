@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Header from './components/header';
 import NewsList from './components/newsList/newsList';
 import WeatherWidgetView from './components/weatherView/weatherWidgetView';
-import {getMainNews} from './services/newsApi';
-import {getCity, getWeather} from './services/weatherApi';
+import Filters from './components/Filters/filters';
+import {getNews} from './services/newsApi';
+
 
 
 class App extends Component {
@@ -11,13 +12,14 @@ class App extends Component {
   state={
     data:[],
     category: '',
+    count: 20,
     top: true,
   }
 
   //get data for main page
   async componentDidMount(){
     const {top, category} = this.state;
-    let news = await getMainNews(top, category);
+    let news = await getNews(top, category);
     console.log(news);
 
     this.setState({
@@ -35,15 +37,20 @@ class App extends Component {
   }
 
   getCategory = async()=>{
-    const {top, category} = this.state;
-    let data = await getMainNews(top, category);
+    const {top, category, count} = this.state;
+    let data = await getNews(top, category, count);
 
     this.setState({
       data
     });
   }
 
-  
+  //handler for change  articles count, which show at page
+  handleCount = (e)=>{
+    this.setState({
+      count: +e.currentTarget.getAttribute('data-count')
+    }, this.getCategory);
+  }
 
 
   render() {
@@ -61,8 +68,10 @@ class App extends Component {
       <div className="App">
         <Header items={items} handle={this.handleCategory}/>
         <button >city</button>
+        <Filters handleCount = {this.handleCount}/>
         <NewsList data={this.state.data}/>
         <WeatherWidgetView />
+        
       </div>
     );
   }
