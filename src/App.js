@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Header from './components/header';
 import NewsList from './components/newsList/newsList';
-import {getMainNews} from './services/api';
+import WeatherWidgetView from './components/weatherView/weatherWidgetView';
+import {getMainNews} from './services/newsApi';
+import {getCity, getWeather} from './services/weatherApi';
 
 
 class App extends Component {
@@ -14,7 +16,8 @@ class App extends Component {
 
   //get data for main page
   async componentDidMount(){
-    let news = await getMainNews(this.state.category);
+    const {top, category} = this.state;
+    let news = await getMainNews(top, category);
     console.log(news);
 
     this.setState({
@@ -22,24 +25,26 @@ class App extends Component {
     })
   }
 
-  //test for category
+  
   handleCategory = (e)=>{
     console.log(e.target.getAttribute('data-item'));
     this.setState({
       category: e.target.getAttribute('data-item'),
     }, this.getCategory);
-    /*let data = await getMainNews(this.state.category);
-
-    console.log(data);*/
+    
   }
 
   getCategory = async()=>{
-    let data = await getMainNews(this.state.category);
+    const {top, category} = this.state;
+    let data = await getMainNews(top, category);
 
     this.setState({
       data
     });
   }
+
+  
+
 
   render() {
 
@@ -55,7 +60,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header items={items} handle={this.handleCategory}/>
+        <button >city</button>
         <NewsList data={this.state.data}/>
+        <WeatherWidgetView />
       </div>
     );
   }
