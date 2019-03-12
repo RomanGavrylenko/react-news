@@ -72,15 +72,28 @@ class App extends Component {
       {name: "Здоровье", attr: 'headlth'},
       {name: "Развлечения", attr: "entertainment"}];
 
+    const headerItems = [
+      {name:'Главная', path: '/'},
+      {name:'Погода', path: '/weather'},
+      {name:'Профиль', path: '/profile'},
+    ];
+
     return (
       <div className="App">
         <Header 
-            items={items} 
+            items={headerItems} 
             handle={this.handleCategory}
         />
         <Content 
             leftOne = {<UserProfileWidgetView />}
-            leftTwo = {<Filters handleCount = {this.handleCount} count={this.state.count}/>}
+            leftTwo = {
+              <Filters
+                handleCount = {this.handleCount}
+                handleCategory = {this.handleCategory}
+                count={this.state.count}
+                items={items}
+              />
+            }
             leftThree = {<WeatherWidgetView />}
             main = {<NewsList data={this.state.data}/>}
         />

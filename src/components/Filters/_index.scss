@@ -19,4 +19,18 @@
             background: $active-color;
         } 
     }
+
+    &__category {
+        margin-top: 30px;
+
+        &-item {
+            cursor: pointer;
+            padding: 10px;
+            transition: 1s;
+
+            &:hover {
+                background: $light-grey-color;
+            }
+        }
+    }
 }
