@@ -1,0 +1,30 @@
+
+.user-widget{
+    text-align: center;
+    border: 1px solid black;
+    padding: 40px 0;
+    overflow: hidden;
+
+    &__picture {
+        
+    }
+
+    &__img {
+        border-radius: 50%;
+    }
+
+    &__name {
+        font-family: 'Sniglet', cursive;
+    }
+
+    &__email {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 18px;
+    }
+
+    &__button {
+        background: $primary-color;
+        font-family: 'Roboto Condensed', sans-serif;
+        width: 80%;
+    }
+}

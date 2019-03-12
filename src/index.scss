@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+@import './styles//variables';
+@import './styles/component/button';
+
+@import './components/header/index';
+@import './components/user-profiles/index';
+@import './components/Filters/index';
+@import './components/weatherView/index';
+@import './components/newsList/index';
+
+.text{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.link {
+    color: inherit;
+    display: block;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+

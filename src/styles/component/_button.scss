@@ -1,0 +1,16 @@
+.button{
+    border: none;
+    outline: none;
+    padding: 20px 10px;
+
+    &:active {
+        outline: none;
+        border: none;
+    }
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+

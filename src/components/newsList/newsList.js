@@ -1,6 +1,6 @@
 import React from 'react';
 import SingleNews from './singleNews';
-import './news-list.css';
+//import './news-list.css';
 import PropTypes from 'prop-types';
 
 

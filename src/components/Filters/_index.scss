@@ -1,0 +1,22 @@
+.filters {
+    padding: 40px 10px;
+
+    &__title{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__count-block{
+        display: flex;
+        justify-content: center;
+    }
+
+    &__count-button {
+        display: block;
+        padding: 20px;
+        background: $primary-color;
+        &_active {
+            background: $active-color;
+        } 
+    }
+}

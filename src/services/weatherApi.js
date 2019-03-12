@@ -25,6 +25,9 @@ export async function getWeather(){
         let weather = await makeRequest("https://api.openweathermap.org/data/2.5/weather?q=donetsk&appid="+API_KEY);
         console.log(weather);
         let temp = parseInt(weather.main.temp - 273);
+        if(temp>0){
+            temp = `+${temp}°С`
+        }
         
         /*let sunrise = new Date(weather.sys.sunrise*1000).toLocaleTimeString();
         let sunset = new Date(weather.sys.sunset*1000).toLocaleTimeString();*/
@@ -34,6 +37,8 @@ export async function getWeather(){
 
         let iconSRC = "http://openweathermap.org/img/w/" + weather.weather[0].icon + '.png';
 
+        let goodPressure = pressureConvert(weather.main.pressure);
+
         let windowDirection = getWindDirection(weather.wind.deg);
 
         let info = {
@@ -41,7 +46,7 @@ export async function getWeather(){
             temp: temp,
             icon: iconSRC,
             weatherDescription: weather.weather[0].description,
-            pressure: weather.main.pressure,
+            pressure: goodPressure,
             humidity: weather.main.humidity,
             clouds: weather.clouds.all,
             wind: weather.wind.speed,
@@ -103,4 +108,11 @@ function getSun(ms){
     let time=`${hour}:${minute}`;
     
     return time;
+}
+
+// atmosphere pressure convert
+
+function pressureConvert(data){
+    let pres = (data * 0.750062).toFixed();
+    return pres;
 }

@@ -7,6 +7,9 @@ import UserProfileWidgetView from './components/user-profiles/userProfileWidgetV
 import Content from './layout/content';
 import {getNews} from './services/newsApi';
 
+import 'bootstrap/scss/bootstrap.scss';
+import './index.scss';
+
 
 
 class App extends Component {
@@ -71,10 +74,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header items={items} handle={this.handleCategory}/>
+        <Header 
+            items={items} 
+            handle={this.handleCategory}
+        />
         <Content 
             leftOne = {<UserProfileWidgetView />}
-            leftTwo = {<Filters handleCount = {this.handleCount}/>}
+            leftTwo = {<Filters handleCount = {this.handleCount} count={this.state.count}/>}
             leftThree = {<WeatherWidgetView />}
             main = {<NewsList data={this.state.data}/>}
         />

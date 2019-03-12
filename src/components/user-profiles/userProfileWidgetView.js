@@ -13,12 +13,15 @@ export default function UserProfileWidgetView(props){
                                     src = {user.photo}
                                 />
                             </figure>
-                            <h3 className='user-widget__name'>
+                            <h2 className='user-widget__name'>
                                 {user.name}
-                            </h3>
+                            </h2>
                             <p className='user-widget__email'>
                                 {user.email}
                             </p>
+                            <button className='button user-widget__button'>
+                                В профиль
+                            </button>
                         </div>
                     );
                 }

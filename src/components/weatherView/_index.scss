@@ -1,0 +1,44 @@
+.weather {
+
+    //get flex for weather info
+
+    &__temp-block {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+    }
+
+    //position img to vertical center
+
+    &__img {
+        position: relative;
+        top: 10px;
+    }
+    
+    //styles for text block at weather
+
+    &__params-block{
+        font-size: 12px;
+    }
+
+    &__params-row {
+        color: $grey-color;
+        margin: 0;
+    }
+
+    //sunrise and sunset time
+
+    &__data {
+        color: $black-color;
+    }
+
+    &__day-time {
+        margin-top: 20px;
+    }
+
+    &__time {
+        margin: 0;
+        font-size: 14px;
+        text-align: center;
+    }
+}

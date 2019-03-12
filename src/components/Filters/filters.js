@@ -1,35 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Filters({handleCount}){
+export default function Filters({handleCount, count}){
+
+    const arr = [10,20,50];
+
+
     return(
         <div className='filters'>
+            <h5 className='filters__title text'>
+                Фильтры для новостей
+            </h5>
             <div className='filters__count'>
-                <p className='filter__text'>
-                    Отобразить новости:
-                    <button
-                        className='filter__button' 
-                        data-count='10'
-                        onClick={handleCount}
-                    >
-                        10
-                    </button>
-                    <button
-                        className='filter__button' 
-                        data-count='20'
-                        onClick={handleCount}
-                    >
-                        20
-                    </button>
-                    <button
-                        className='filter__button' 
-                        data-count='50'
-                        onClick={handleCount}
-                    >
-                        50
-                    </button>
+                <p className='filters__text text'>
+                    Кол-во новостей:
                 </p>
+                <div className='filters__count-block'> 
+                    {arr.map(num=>{
+                        let cls;
+                        if(num == count) {
+                            cls = 'filters__count-button button filters__count-button_active';
+                        } else {
+                            cls = 'filters__count-button button';
+                        }
 
+                        return(
+                            <button
+                                key={num}
+                                className={cls}
+                                data-count={num}
+                                onClick={handleCount}
+                            >
+                                {num}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );
