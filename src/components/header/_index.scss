@@ -22,4 +22,19 @@
             }
         }
     }
+
+    &__search {
+        margin: auto;
+        text-align: center;
+
+        &-button {
+            padding: 5px 15px;
+            background: white;
+            border-radius: 5px;
+
+           
+        }
+    }
+
+   
 }

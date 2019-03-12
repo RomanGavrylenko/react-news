@@ -7,6 +7,8 @@ import UserProfileWidgetView from './components/user-profiles/userProfileWidgetV
 import Content from './layout/content';
 import {getNews} from './services/newsApi';
 
+
+
 import 'bootstrap/scss/bootstrap.scss';
 import './index.scss';
 
@@ -19,6 +21,7 @@ class App extends Component {
     category: '',
     count: 20,
     top: true,
+    search: '',
   }
 
   //get data for main page
@@ -60,6 +63,18 @@ class App extends Component {
     }, this.getCategory);
   }
 
+  handleSearch = (e) =>{
+    e.preventDefault();
+
+
+  }
+
+  changeSearch = (e)=>{
+    this.setState({
+      search: e.currentTarget.value
+    })
+  }
+
 
   render() {
 
@@ -83,6 +98,8 @@ class App extends Component {
         <Header 
             items={headerItems} 
             handle={this.handleCategory}
+            handleSearch = {this.handleSearch}
+            changeVal = {this.changeSearch}
         />
         <Content 
             leftOne = {<UserProfileWidgetView />}

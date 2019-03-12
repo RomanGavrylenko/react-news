@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import toggleOpen from '../../HOC/toggleOpen';
 
-export default class Filters extends React.Component{
+class Filters extends React.Component{
 
     //get count block    
 
@@ -31,6 +32,8 @@ export default class Filters extends React.Component{
         return countList;
     }
 
+    //get category block
+
     getCategory = ()=>{
         const {items, handleCategory }= this.props;
 
@@ -53,23 +56,34 @@ export default class Filters extends React.Component{
     render(){
         return(
             <div className='filters'>
-                <h5 className='filters__title text'>
+                <h5 className='filters__title filters__title_clickable text' onClick={this.props.toggleOpen}>
                     Фильтры для новостей
                 </h5>
-                <div className='filters__count'>
-                    <p className='filters__text text'>
-                        Кол-во новостей:
-                    </p>
-                    <div className='filters__count-block'> 
-                        {this.getCount()};
-                    </div>
-                </div>
-                <div className='filters__category'>
-                    <p className='filters__text text'>
-                        Категории:
-                    </p>
-                    {this.getCategory()}
-
+                { this.props.isOpen &&
+                    <React.Fragment>
+                        <div className='filters__count'>
+                            <p className='filters__text text'>
+                                Кол-во новостей:
+                            </p>
+                            <div className='filters__count-block'> 
+                                {this.getCount()};
+                            </div>
+                        </div>
+                        <div className='filters__category'>
+                            <p className='filters__text text'>
+                                Категории:
+                            </p>
+                            {this.getCategory()}
+                        </div>
+                    </React.Fragment>
+                }
+                <div className='filters__show'>
+                    <button 
+                        className='button filters__button'
+                        onClick={this.props.toggleOpen}
+                    >
+                        {this.props.isOpen ? 'Скрыть' : "Показать"}
+                    </button>
                 </div>
             </div>
         );
@@ -79,3 +93,5 @@ export default class Filters extends React.Component{
 Filters.propTypes={
     handleCount: PropTypes.func.isRequired,
 }
+
+export default toggleOpen(Filters);

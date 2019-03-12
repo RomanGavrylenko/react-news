@@ -1,7 +1,8 @@
 import React from 'react';
 import UserProfile from '../../container/userProfile';
+import toggleOpen from '../../HOC/toggleOpen';
 
-export default function UserProfileWidgetView(props){
+function UserProfileWidgetView(props){
     return(
         <UserProfile>
             {({user})=>{
@@ -11,17 +12,22 @@ export default function UserProfileWidgetView(props){
                                 <img 
                                     className='user-widget__img'
                                     src = {user.photo}
+                                    onClick = {props.toggleOpen}
                                 />
                             </figure>
-                            <h2 className='user-widget__name'>
-                                {user.name}
-                            </h2>
-                            <p className='user-widget__email'>
-                                {user.email}
-                            </p>
-                            <button className='button user-widget__button'>
-                                В профиль
-                            </button>
+                            { props.isOpen &&
+                                <React.Fragment>
+                                    <h2 className='user-widget__name'>
+                                        {user.name}
+                                    </h2>
+                                    <p className='user-widget__email'>
+                                        {user.email}
+                                    </p>
+                                    <button className='button user-widget__button'>
+                                        В профиль
+                                    </button>
+                                </React.Fragment>
+                            }
                         </div>
                     );
                 }
@@ -29,3 +35,5 @@ export default function UserProfileWidgetView(props){
         </UserProfile>
     );
 }
+
+export default toggleOpen(UserProfileWidgetView);

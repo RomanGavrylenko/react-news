@@ -4,13 +4,13 @@
     border: 1px solid black;
     padding: 40px 0;
     overflow: hidden;
+    transition: all 1s;
 
-    &__picture {
-        
-    }
+    
 
     &__img {
         border-radius: 50%;
+        cursor: pointer;
     }
 
     &__name {
