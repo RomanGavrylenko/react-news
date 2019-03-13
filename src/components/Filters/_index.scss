@@ -39,6 +39,10 @@
             &:hover {
                 background: $light-grey-color;
             }
+
+            &_active {
+                background: $light-grey-color;
+            }
         }
     }
 

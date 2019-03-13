@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default class NewsList extends React.Component{
 
-    getNews(){
+    getNews(){       
         const newsList = this.props.data.map(news=>{
             return(<SingleNews key={news.publishedAt}  data={news}/>);
         });
@@ -25,4 +25,8 @@ export default class NewsList extends React.Component{
 
 NewsList.propTypes ={
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
+}
+
+NewsList.defaultProps = {
+    data:[]
 }

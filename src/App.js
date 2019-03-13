@@ -5,7 +5,7 @@ import WeatherWidgetView from './components/weatherView/weatherWidgetView';
 import Filters from './components/Filters/filters';
 import UserProfileWidgetView from './components/user-profiles/userProfileWidgetView'
 import Content from './layout/content';
-import {getNews} from './services/newsApi';
+import {getNews, searchNews} from './services/newsApi';
 
 
 
@@ -50,7 +50,7 @@ class App extends Component {
   getCategory = async()=>{
     const {top, category, count} = this.state;
     let data = await getNews(top, category, count);
-
+    
     this.setState({
       data
     });
@@ -63,10 +63,15 @@ class App extends Component {
     }, this.getCategory);
   }
 
-  handleSearch = (e) =>{
+  handleSearch = async (e) =>{
+    const {search, count} = this.state;
     e.preventDefault();
 
-
+    let data = await searchNews(search, count);
+    
+    this.setState({
+      data
+    });
   }
 
   changeSearch = (e)=>{
@@ -100,6 +105,7 @@ class App extends Component {
             handle={this.handleCategory}
             handleSearch = {this.handleSearch}
             changeVal = {this.changeSearch}
+            value={this.state.search}
         />
         <Content 
             leftOne = {<UserProfileWidgetView />}
@@ -108,11 +114,12 @@ class App extends Component {
                 handleCount = {this.handleCount}
                 handleCategory = {this.handleCategory}
                 count={this.state.count}
+                category={this.state.category}
                 items={items}
               />
             }
             leftThree = {<WeatherWidgetView />}
-            main = {<NewsList data={this.state.data}/>}
+            main = {<NewsList  data={this.state.data}/>}
         />
       </div>
     );

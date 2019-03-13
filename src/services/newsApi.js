@@ -31,5 +31,24 @@ export async function getNews(top=true ,category = '', count=20, country='ua'){
     } catch(e){
         console.log(e);
     }
-} 
+}
+
+export async function searchNews(phrase, count=20){
+    try{
+        let q = `q=${phrase}`;
+        let pageSize = `&pageSize=${count}`;
+
+        let url = `${BASE_URL}everything?${q}${pageSize}`
+
+        let data = await makeRequest(url, {
+                headers: {
+                    ...HEADER
+                }
+            });
+       
+        return data.articles;
+    } catch(e){
+        console.log(e);
+    }
+}
 

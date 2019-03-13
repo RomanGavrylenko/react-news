@@ -1,15 +1,40 @@
 import React from 'react';
 import Weather from '../../container/weatherWidget';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function WeatherWidgetView(props){
     return(
         <Weather>
             {
-                ({weather})=>{
+                ({weather, place, showInput, toggleOpen, handleInput, handleSubmit})=>{
                     
                     return(
                         <div className='weather'>
-                            <h3 className='weather__city text'>{weather.city}</h3>
+                            <h3
+                                className='weather__city text' 
+                                onClick={toggleOpen}
+                            >
+                                {weather.city}
+                            </h3>
+                            {showInput &&
+                                <form className='weather__form' onSubmit={handleSubmit}>
+                                    <input
+                                        className='form__input weather__form-input' 
+                                        type='text'
+                                        name='city'
+                                        value={place}
+                                        onChange={handleInput}
+                                    />
+                                    <button
+                                        className='button form__button weather__button'
+                                        type='submit'
+                                        
+                                    >
+                                        <FontAwesomeIcon icon={faSearch} />
+                                    </button>
+                                </form>
+                            }
                             <div className='weather__info'>
                                 <div className='weather__temp-block'>
                                     <h3 className='weather__temp'>

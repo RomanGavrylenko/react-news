@@ -35,12 +35,18 @@ class Filters extends React.Component{
     //get category block
 
     getCategory = ()=>{
-        const {items, handleCategory }= this.props;
+        const {items, handleCategory, category }= this.props;
 
         let categoryList = items.map(item=>{
+            let cls;
+            if(item.attr == category) {
+                cls = 'filters__category-item filters__category-item_active text';
+            } else {
+                cls = 'filters__category-item text';
+            }
             return(
                     <div 
-                        className='filters__category-item text'
+                        className={cls}
                         onClick = {handleCategory}
                         data-item = {item.attr}
                     >
@@ -66,7 +72,7 @@ class Filters extends React.Component{
                                 Кол-во новостей:
                             </p>
                             <div className='filters__count-block'> 
-                                {this.getCount()};
+                                {this.getCount()}
                             </div>
                         </div>
                         <div className='filters__category'>

@@ -1,5 +1,9 @@
 .weather {
 
+    &__city {
+        cursor: pointer;
+    }
+
     //get flex for weather info
 
     &__temp-block {

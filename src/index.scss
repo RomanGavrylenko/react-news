@@ -23,3 +23,23 @@
     }
 }
 
+.form{
+
+    &__input{
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid $primary-color;
+        font-family: 'Roboto Condensed', sans-serif;
+
+        &::placeholder{
+            color: $grey-color;
+        }
+    }
+
+    &__button {
+        background: $primary-color;
+        padding: 12px 10px;
+        border-radius: 5px;
+    }
+}
+

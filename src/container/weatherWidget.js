@@ -1,9 +1,11 @@
 import React from 'react';
 import {getWeather} from '../services/weatherApi';
+import toggleOpen from '../HOC/toggleOpen';
 
-export default class Weather extends React.Component {
+class Weather extends React.Component {
     state={
         weather: {},
+        place: 'Donetsk'
     }
 
     async componentDidMount(){
@@ -16,9 +18,28 @@ export default class Weather extends React.Component {
         })
     }
 
+    handleInput = (e)=>{
+        this.setState({
+            place: e.currentTarget.value 
+        });
+    }
+
+    handleSubmit = async (e)=>{
+        e.preventDefault();
+        this.props.toggleOpen();
+
+    }
+
     render(){
         return this.props.children({
             weather: this.state.weather,
+            place: this.state.place,
+            showInput: this.props.isOpen,
+            toggleOpen: this.props.toggleOpen,
+            handleInput: this.handleInput,
+            handleSubmit: this.handleSubmit
         })
     }
 }
+
+export default toggleOpen(Weather);
