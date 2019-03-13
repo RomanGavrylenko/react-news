@@ -1,5 +1,6 @@
 import React from 'react';
 import Weather from '../../container/weatherWidget';
+import WeatherPortal from '../../portals/weatherPortal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +8,7 @@ export default function WeatherWidgetView(props){
     return(
         <Weather>
             {
-                ({weather, place, showInput, toggleOpen, handleInput, handleSubmit})=>{
+                ({weather, place, showInput, toggleOpen, handleInput, handleSubmit, modal})=>{
                     
                     return(
                         <div className='weather'>
@@ -17,6 +18,8 @@ export default function WeatherWidgetView(props){
                             >
                                 {weather.city}
                             </h3>
+                            {// показать блок с полем для ввода нового города
+                            }
                             {showInput &&
                                 <form className='weather__form' onSubmit={handleSubmit}>
                                     <input
@@ -71,6 +74,7 @@ export default function WeatherWidgetView(props){
                                     </p>
                                 </div>
                             </div>
+                            {modal.show && <WeatherPortal text={modal.text}  close={modal.close}/>}
                         </div>
                     );
                 }

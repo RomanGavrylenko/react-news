@@ -20,9 +20,9 @@ export async function getCity(){
 }
 
 
-export async function getWeather(){
+export async function getWeather(city){
     try{
-        let weather = await makeRequest("https://api.openweathermap.org/data/2.5/weather?q=donetsk&appid="+API_KEY);
+        let weather = await makeRequest("https://api.openweathermap.org/data/2.5/weather?q="+ city +"&appid="+API_KEY);
         console.log(weather);
         let temp = parseInt(weather.main.temp - 273);
         if(temp>0){
@@ -57,7 +57,8 @@ export async function getWeather(){
 
         return info;
     } catch(e){
-        console.log(e)
+        console.log(e);
+        throw e;
     }
 
 
