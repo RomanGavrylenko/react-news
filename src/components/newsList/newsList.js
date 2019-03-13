@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 
 export default class NewsList extends React.Component{
 
-    getNews(){       
+    getNews(){
+        
+        if(this.props.data.length == 0){
+            return <p>Извините, ничего не найдено, посему нечего отображать</p>
+        }
+        
         const newsList = this.props.data.map(news=>{
             return(<SingleNews key={news.publishedAt}  data={news}/>);
         });
