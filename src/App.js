@@ -6,6 +6,9 @@ import Filters from './components/Filters/filters';
 import UserProfileWidgetView from './components/user-profiles/userProfileWidgetView'
 import Content from './layout/content';
 import {getNews, searchNews} from './services/newsApi';
+import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import WeatherPage from './components/weather/weatherPage';
+import Page404 from './components/404/404';
 
 
 
@@ -46,6 +49,7 @@ class App extends Component {
   }
 
   //change data for showing
+  //обновить данные исходя из новой категории
 
   getCategory = async()=>{
     const {top, category, count} = this.state;
@@ -57,11 +61,14 @@ class App extends Component {
   }
 
   //handler for change  articles count, which show at page
+  //обработчик для отображения кол-ва новостей на странице
   handleCount = (e)=>{
     this.setState({
       count: +e.currentTarget.getAttribute('data-count')
     }, this.getCategory);
   }
+
+  //обработчики для поиска новостей
 
   handleSearch = async (e) =>{
     const {search, count} = this.state;
@@ -80,8 +87,9 @@ class App extends Component {
     })
   }
 
+  //получить отображения для главной страницы
 
-  render() {
+  getMainPage(){
 
     const items = [
       {name:'Главная', attr: ''},
@@ -92,36 +100,56 @@ class App extends Component {
       {name: "Здоровье", attr: 'headlth'},
       {name: "Развлечения", attr: "entertainment"}];
 
+    return(
+      <Content 
+        leftOne = {<UserProfileWidgetView />}
+        leftTwo = {
+          <Filters
+            handleCount = {this.handleCount}
+            handleCategory = {this.handleCategory}
+            count={this.state.count}
+            category={this.state.category}
+            items={items}
+          />
+        }
+        leftThree = {<WeatherWidgetView />}
+        main = {<NewsList  data={this.state.data}/>}
+      />
+    );
+  }
+
+
+  render() {
+
+    
+
     const headerItems = [
       {name:'Главная', path: '/'},
       {name:'Погода', path: '/weather'},
       {name:'Профиль', path: '/profile'},
     ];
 
+
     return (
-      <div className="App">
-        <Header 
-            items={headerItems} 
-            handle={this.handleCategory}
-            handleSearch = {this.handleSearch}
-            changeVal = {this.changeSearch}
-            value={this.state.search}
-        />
-        <Content 
-            leftOne = {<UserProfileWidgetView />}
-            leftTwo = {
-              <Filters
-                handleCount = {this.handleCount}
-                handleCategory = {this.handleCategory}
-                count={this.state.count}
-                category={this.state.category}
-                items={items}
-              />
-            }
-            leftThree = {<WeatherWidgetView />}
-            main = {<NewsList  data={this.state.data}/>}
-        />
-      </div>
+        <BrowserRouter>
+          <div className="App">
+            <Header 
+                items={headerItems} 
+                handle={this.handleCategory}
+                handleSearch = {this.handleSearch}
+                changeVal = {this.changeSearch}
+                value={this.state.search}
+            />
+            <Switch>
+              <Route exact path='/' render={
+                ()=> this.getMainPage()
+              } />
+              <Route exect path='/weather' component={WeatherPage} />
+              <Route component={Page404} />
+            </Switch>
+            
+          </div>
+        </BrowserRouter>
     );
   }
 }

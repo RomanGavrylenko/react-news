@@ -2,6 +2,7 @@ import React from 'react';
 import toggleOpen from '../../HOC/toggleOpen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
 
 //import './index.css';
 
@@ -13,12 +14,18 @@ class Header extends React.Component {
     getMenuItems = ()=>{
         let itemList = this.props.items.map(item=>{
                 return(
-                <li className='header__nav-item'
+                <Link
+                    className='header__nav-link link'
                     key={item.name}
-                    onClick={this.props.handle}
+                    to={item.path}
                 >
-                    {item.name}
-                </li>
+                    <li className='header__nav-item'
+                        key={item.name}
+                        onClick={this.props.handle}
+                    >
+                        {item.name}
+                    </li>
+                </Link>
                 );
             });
 
