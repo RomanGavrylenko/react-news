@@ -9,7 +9,6 @@ export default function WeatherWidgetView(props){
         <Weather>
             {
                 ({weather, place, showInput, toggleOpen, handleInput, handleSubmit, modal})=>{
-                    
                     return(
                         <div className='weather'>
                             <h3

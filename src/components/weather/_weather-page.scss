@@ -1,0 +1,75 @@
+.weather-page{
+
+    &__wrapper{
+      margin: 0 auto;
+    }
+
+    &__body{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid $grey-color;
+        background: rgba(228, 215, 158, 0.5);
+
+        @media screen and (max-width: 600px){
+            flex-direction: column;
+        }
+    }
+
+    &__date{
+        text-align: center;
+        font-weight: 600;
+
+        @media screen and (max-width:600px){
+            margin: 1em 0;
+
+        }
+    }
+
+    //отображение картинки
+
+    &__icon {
+        flex-grow: 1;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media screen and (max-width: 600px){
+            justify-content: center;
+        }
+    }
+
+    //блока с температурой
+
+    &__temp {
+        flex-grow: 1;
+        text-align: center;
+
+        @media screen and (max-width:600px){
+            margin-bottom: 1em;
+        }
+
+        &-par {
+            margin: 0;
+
+        }
+    }
+
+    //инфа по ветру и влажности
+
+    &__info{
+        @media screen and (max-width: 600px){
+            margin-bottom: 1em;
+        }
+    }
+
+    &__data {
+        flex-grow: 1;
+        margin: 0;
+
+        @media screen and (max-width: 600px){
+            text-align: center;
+        }
+    }
+}

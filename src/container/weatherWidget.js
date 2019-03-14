@@ -1,5 +1,5 @@
 import React from 'react';
-import {getWeather} from '../services/weatherApi';
+import {getNowWeather} from '../services/weatherApi';
 import toggleOpen from '../HOC/toggleOpen';
 
 class Weather extends React.Component {
@@ -10,7 +10,7 @@ class Weather extends React.Component {
     }
 
     async componentDidMount(){
-        let weather = await getWeather(this.state.place);
+        let weather = await getNowWeather(this.state.place);
     
         console.log(weather);
 
@@ -33,7 +33,7 @@ class Weather extends React.Component {
         e.preventDefault();
         this.props.toggleOpen();
         try{
-            let weather = await getWeather(this.state.place);
+            let weather = await getNowWeather(this.state.place);
             console.log(weather);
             
             this.setState({
