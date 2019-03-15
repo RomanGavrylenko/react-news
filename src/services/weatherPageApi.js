@@ -6,7 +6,7 @@ const FIVE_DAY_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 
 export async function getFiveDays(city){
     try{
-        let data = await makeRequest(`${FIVE_DAY_URL}?q=${city},ua&appid=${API_KEY}`);
+        let data = await makeRequest(`${FIVE_DAY_URL}?q=${city}&appid=${API_KEY}`);
         let weather=data.list.map(item=>{
             return({
                 name: data.city.name,
