@@ -1,5 +1,18 @@
 .weather-page{
 
+    &__title {
+        text-align: center;
+    }
+
+    &__form {
+        margin-bottom: 2em;
+
+        &-input{
+            width: 50%;
+            
+        }
+    }
+
     &__wrapper{
       margin: 0 auto;
     }

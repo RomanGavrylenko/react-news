@@ -1,6 +1,7 @@
 import React from 'react';
 import WeatherPageContainer from '../../container/werather-page';
-
+import WeatherSearch from '../weatherView/weather-search-form';
+import WeatherPortal from '../../portals/weatherPortal';
 
 export default class WeatherPage extends React.Component{
     
@@ -44,9 +45,20 @@ export default class WeatherPage extends React.Component{
         return(
            <WeatherPageContainer>
                {
-                   ({five})=>{
+                   ({five, place, handleInput, handleSubmit, modal})=>{
                        return(
                             <div className='container'>
+                                <div className='weather-page__title'>
+                                    <h3>
+                                        {place}
+                                    </h3>
+                                    <WeatherSearch 
+                                        handleInput={handleInput}
+                                        handleSubmit={handleSubmit}
+                                        place={place}
+                                        prefix='weather-page'
+                                    />
+                                </div>
                                 <div className='row'>
                                     <div className='weather-page__wrapper col-9'>
                                         {
@@ -54,6 +66,7 @@ export default class WeatherPage extends React.Component{
                                         }
                                     </div>
                                 </div>
+                                {modal.show && <WeatherPortal text={modal.text}  close={modal.close}/>}
                             </div>
                        );
 

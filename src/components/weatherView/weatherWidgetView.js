@@ -1,8 +1,7 @@
 import React from 'react';
 import Weather from '../../container/weatherWidget';
 import WeatherPortal from '../../portals/weatherPortal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import WeatherSearch from './weather-search-form';
 
 export default function WeatherWidgetView(props){
     return(
@@ -19,24 +18,14 @@ export default function WeatherWidgetView(props){
                             </h3>
                             {// показать блок с полем для ввода нового города
                             }
-                            {showInput &&
-                                <form className='weather__form' onSubmit={handleSubmit}>
-                                    <input
-                                        className='form__input weather__form-input' 
-                                        type='text'
-                                        name='city'
-                                        value={place}
-                                        onChange={handleInput}
-                                    />
-                                    <button
-                                        className='button form__button weather__button'
-                                        type='submit'
-                                        
-                                    >
-                                        <FontAwesomeIcon icon={faSearch} />
-                                    </button>
-                                </form>
-                            }
+                            {showInput && 
+                                <WeatherSearch 
+                                    handleSubmit={handleSubmit}
+                                    handleInput = {handleInput}
+                                    place={place}
+                                    prefix = 'weather'
+                                />
+                            }   
                             <div className='weather__info'>
                                 <div className='weather__temp-block'>
                                     <h3 className='weather__temp'>

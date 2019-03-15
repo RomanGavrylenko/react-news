@@ -1,31 +1,22 @@
 import React from 'react';
 import {getNowWeather} from '../services/weatherApi';
 import toggleOpen from '../HOC/toggleOpen';
+import weatherPlace from '../HOC/weather-place';
 
 class Weather extends React.Component {
     state={
         weather: {},
-        place: 'Donetsk',
-        modal: {show: false, text: ''}
     }
 
     async componentDidMount(){
-        let weather = await getNowWeather(this.state.place);
-    
-        console.log(weather);
+        
+        let weather = await getNowWeather(this.props.place);
 
         this.setState({
             weather
         })
     }
 
-    //обработка инпута ввода города
-
-    handleInput = (e)=>{
-        this.setState({
-            place: e.currentTarget.value 
-        });
-    }
 
     //обработка сабмита формы и осущ нового запроса к API для получения новых данных о погоде
 
@@ -33,48 +24,40 @@ class Weather extends React.Component {
         e.preventDefault();
         this.props.toggleOpen();
         try{
-            let weather = await getNowWeather(this.state.place);
+            let weather = await getNowWeather(this.props.place);
             console.log(weather);
-            
+            this.props.closeModal();
             this.setState({
-                weather,
-                modal: {show: false, text: ''}
-            });
+                weather
+            })
+
         } catch(e){
             console.log('Ничего не найдено по вашему запросу');
-            this.setState({
-                modal: {
-                    show: true, 
-                    text: 'Ничего не найдено по вашему запросу'
-                }
-            })
+            
+            this.props.setModal('Ничего не найдено по вашему запросу')
             return;
         } 
     }
 
-    //закрытие портала
-
-    closeModal = ()=>{
-        this.setState({
-            modal: {show: false, text: ''}
-        })
-    }
 
     render(){
         return this.props.children({
             weather: this.state.weather,
-            place: this.state.place,
+            place: this.props.place,
             showInput: this.props.isOpen,
             toggleOpen: this.props.toggleOpen,
-            handleInput: this.handleInput,
+            handleInput: this.props.handleInput,
             handleSubmit: this.handleSubmit,
             modal: {
-                show: this.state.modal.show,
-                text: this.state.modal.text,
-                close: this.closeModal,
+                show: this.props.modal.show,
+                text: this.props.modal.text,
+                close: this.props.closeModal,
             }
         })
     }
 }
-
-export default toggleOpen(Weather);
+/*обварачиваем компонент Weather в два КВП. 
+*   Первый для скрытия/показа поля инпута
+*   Второй для ввода города, отображения/скрытия портала (модального окна)
+*/ 
+export default weatherPlace(toggleOpen(Weather));
