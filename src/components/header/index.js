@@ -1,53 +1,51 @@
 import React from 'react';
 import toggleOpen from '../../HOC/toggleOpen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import {NewsContext} from '../../context-files/news-context';
 import SearchForm from '../search-form/search-form';
+import Menu from '../menu/menu';
+import MenuMobile from '../../portals/mobileMenu/menu-portal';
 
 
 //import './index.css';
 
 class Header extends React.Component {
     state = {
-        isOpen: false
+        openMobMenu: false
     }
 
-    getMenuItems = ()=>{
-        let itemList = this.props.items.map(item=>{
-                return(
-                <Link
-                    className='header__nav-link link'
-                    key={item.name}
-                    to={item.path}
-                >
-                    <li className='header__nav-item'
-                        key={item.name}
-                    >
-                        {item.name}
-                    </li>
-                </Link>
-                );
-            });
-
-        return itemList;
+    handleMobileMenu = ()=>{
+        this.setState(state=>({
+            openMobMenu: !state.openMobMenu
+        }));
     }
+
 
     render(){
 
         const { isOpen, toggleOpen} = this.props;
 
         return(
-            <NewsContext>
+            <NewsContext.Consumer>
                 {({handleSearch, changeSearch, state})=>{return(
                     <div className='container'>
                         <header className='header'>
-                            <div className='row'>
-                                <ul className='header__nav col-md-10'>
-                                    {this.getMenuItems()}
-                                </ul>
-                                <div className='header__search col-md-2'>
+                            <div className='header__menu-row'>
+                                <Menu 
+                                    items={this.props.items}
+                                    prefix='header'
+                                />
+                                { !this.state.openMobMenu &&
+                                    <div 
+                                        className='header__menu-icon'
+                                        onClick={this.handleMobileMenu}
+                                    >
+                                        <FontAwesomeIcon icon={faBars}  size='2x' />
+                                    </div>
+                                }
+                                <div className='header__search'>
                                     <button className='button header__search-button' onClick={toggleOpen}>
                                         <FontAwesomeIcon icon={faSearch} size="3x" border />
                                     </button>    
@@ -60,13 +58,21 @@ class Header extends React.Component {
                                         handleSubmit={handleSearch}
                                         value={state.search}
                                         prefix='header'
+                                        placeholder = 'Какие новости вы желаете найти?'
                                     /> 
                                 </div>
+                            }
+                            {
+                                this.state.openMobMenu && 
+                                <MenuMobile 
+                                    items={this.props.items}
+                                    close={this.handleMobileMenu}
+                                />
                             }
                         </header>
                     </div>
                 )}}
-            </NewsContext>
+            </NewsContext.Consumer>
         );
     }
 }

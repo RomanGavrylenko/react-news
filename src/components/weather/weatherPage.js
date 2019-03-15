@@ -1,7 +1,7 @@
 import React from 'react';
 import WeatherPageContainer from '../../container/werather-page';
 import SearchForm from '../search-form/search-form';
-import WeatherPortal from '../../portals/weatherPortal';
+import WeatherPortal from '../../portals/weatherPortal/weatherPortal';
 
 export default class WeatherPage extends React.Component{
     

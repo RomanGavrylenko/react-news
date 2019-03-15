@@ -3,12 +3,20 @@
     margin-bottom: 25px;
     box-shadow: 0px 0px 5px 3px rgba($color: #000000, $alpha: 0.3);
     padding-bottom: 20px;
+
+    @media screen and (max-width: 768px){
+        
+    }
     
 
     &__nav {
         display: flex;
         list-style: none;
         justify-content: center;
+
+        @media screen and (max-width: 767.99px){
+            display: none;
+        }
 
         &-item {
             display: block;
@@ -24,17 +32,36 @@
         }
     }
 
+    &__menu-row {
+        
+        @media screen and (max-width: 768px){
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    //styles for menu icon button
+
+    &__menu-icon {
+        margin-left: 30px;
+        cursor: pointer;
+
+        @media screen and (min-width: 768px ){
+            display: none;
+        }
+    }
+
     //styles for show button
 
     &__search {
-        margin: auto;
+        margin: 0 auto 2em;
         text-align: center;
 
         &-button {
             padding: 5px 15px;
             background: white;
             border-radius: 5px;
-
            
         }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Weather from '../../container/weatherWidget';
-import WeatherPortal from '../../portals/weatherPortal';
+import WeatherPortal from '../../portals/weatherPortal/weatherPortal';
 import SearchForm from '../search-form/search-form';
 
 export default function WeatherWidgetView(props){

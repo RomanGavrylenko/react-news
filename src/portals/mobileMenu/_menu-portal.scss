@@ -1,0 +1,38 @@
+.mobile-menu{
+
+    &__wrapper {
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0,0.8);
+        width: 60%;
+        height: 100%;
+    }
+
+    &__nav{
+        position: absolute;
+        top: 20%;
+        left: 0;
+        
+
+        &-item {
+            list-style: none;
+            
+            padding: 15px;
+            font-size: 28px;
+            color:rgba(255,255,255, 0.6);
+            transition: 0.5s;
+
+            &:hover {
+                color: rgba(255,255,255, 0.9);
+            }
+        }
+    }
+
+    &__icon{
+        position: absolute;
+        top: 5%;
+        left: 90%;
+        cursor: pointer;
+    }
+}

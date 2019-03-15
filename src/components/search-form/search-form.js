@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function SearchForm({handleSubmit, handleInput, value, prefix}){
+export default function SearchForm({handleSubmit, handleInput, value, prefix, placeholder}){
     return(
         <form className={`${prefix}__form`} onSubmit={handleSubmit}>
             <input
@@ -11,6 +11,7 @@ export default function SearchForm({handleSubmit, handleInput, value, prefix}){
                 name='city'
                 value={value}
                 onChange={handleInput}
+                placeholder={placeholder}
             />
             <button
                 className={`button form__button ${prefix}__button`}
