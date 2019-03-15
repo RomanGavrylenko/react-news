@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import toggleOpen from '../../HOC/toggleOpen';
+import {NewsContext} from '../../context-files/news-context';
 
 class Filters extends React.Component{
 
     //get count block    
 
-    getCount = () =>{
-        const {handleCount, count} = this.props;
+    getCount = (handleCount, count) =>{
+        
         const arr = [10,20,50];
         let countList = arr.map(num=>{
             let cls;
@@ -34,8 +35,8 @@ class Filters extends React.Component{
 
     //get category block
 
-    getCategory = ()=>{
-        const {items, handleCategory, category }= this.props;
+    getCategory = (handleCategory, category)=>{
+        const {items }= this.props;
 
         let categoryList = items.map(item=>{
             let cls;
@@ -61,37 +62,44 @@ class Filters extends React.Component{
 
     render(){
         return(
-            <div className='filters'>
-                <h5 className='filters__title filters__title_clickable text' onClick={this.props.toggleOpen}>
-                    Фильтры для новостей
-                </h5>
-                { this.props.isOpen &&
-                    <React.Fragment>
-                        <div className='filters__count'>
-                            <p className='filters__text text'>
-                                Кол-во новостей:
-                            </p>
-                            <div className='filters__count-block'> 
-                                {this.getCount()}
-                            </div>
+            <NewsContext.Consumer>
+                {({handleCount, handleCategory, state})=>{ return(
+                    <div className='filters'>
+                        <h5 
+                            className='filters__title filters__title_clickable text' 
+                            onClick={this.props.toggleOpen}
+                        >
+                            Фильтры для новостей
+                        </h5>
+                        { this.props.isOpen &&
+                            <React.Fragment>
+                                <div className='filters__count'>
+                                    <p className='filters__text text'>
+                                        Кол-во новостей:
+                                    </p>
+                                    <div className='filters__count-block'> 
+                                        {this.getCount(handleCount, state.count)}
+                                    </div>
+                                </div>
+                                <div className='filters__category'>
+                                    <p className='filters__text text'>
+                                        Категории:
+                                    </p>
+                                    {this.getCategory(handleCategory, state.category)}
+                                </div>
+                            </React.Fragment>
+                        }
+                        <div className='filters__show'>
+                            <button 
+                                className='button filters__button'
+                                onClick={this.props.toggleOpen}
+                            >
+                                {this.props.isOpen ? 'Скрыть' : "Показать"}
+                            </button>
                         </div>
-                        <div className='filters__category'>
-                            <p className='filters__text text'>
-                                Категории:
-                            </p>
-                            {this.getCategory()}
-                        </div>
-                    </React.Fragment>
-                }
-                <div className='filters__show'>
-                    <button 
-                        className='button filters__button'
-                        onClick={this.props.toggleOpen}
-                    >
-                        {this.props.isOpen ? 'Скрыть' : "Показать"}
-                    </button>
-                </div>
-            </div>
+                    </div>
+                )}}
+            </NewsContext.Consumer>
         );
     }
 }
