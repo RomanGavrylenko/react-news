@@ -1,6 +1,6 @@
 import React from 'react';
 import WeatherPageContainer from '../../container/werather-page';
-import WeatherSearch from '../weatherView/weather-search-form';
+import SearchForm from '../search-form/search-form';
 import WeatherPortal from '../../portals/weatherPortal';
 
 export default class WeatherPage extends React.Component{
@@ -52,10 +52,10 @@ export default class WeatherPage extends React.Component{
                                     <h3>
                                         {place}
                                     </h3>
-                                    <WeatherSearch 
+                                    <SearchForm 
                                         handleInput={handleInput}
                                         handleSubmit={handleSubmit}
-                                        place={place}
+                                        value={place}
                                         prefix='weather-page'
                                     />
                                 </div>

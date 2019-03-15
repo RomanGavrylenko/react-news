@@ -2,14 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-export default function WeatherSearch({handleSubmit, handleInput, place, prefix}){
+export default function SearchForm({handleSubmit, handleInput, value, prefix}){
     return(
         <form className={`${prefix}__form`} onSubmit={handleSubmit}>
             <input
                 className={`form__input ${prefix}__form-input`}
                 type='text'
                 name='city'
-                value={place}
+                value={value}
                 onChange={handleInput}
             />
             <button

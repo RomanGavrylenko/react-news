@@ -1,7 +1,7 @@
 import React from 'react';
 import Weather from '../../container/weatherWidget';
 import WeatherPortal from '../../portals/weatherPortal';
-import WeatherSearch from './weather-search-form';
+import SearchForm from '../search-form/search-form';
 
 export default function WeatherWidgetView(props){
     return(
@@ -19,10 +19,10 @@ export default function WeatherWidgetView(props){
                             {// показать блок с полем для ввода нового города
                             }
                             {showInput && 
-                                <WeatherSearch 
+                                <SearchForm 
                                     handleSubmit={handleSubmit}
                                     handleInput = {handleInput}
-                                    place={place}
+                                    value={place}
                                     prefix = 'weather'
                                 />
                             }   

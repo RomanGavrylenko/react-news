@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import {NewsContext} from '../../context-files/news-context';
+import SearchForm from '../search-form/search-form';
 
 
 //import './index.css';
@@ -54,25 +55,12 @@ class Header extends React.Component {
                             </div>
                             { isOpen &&
                                 <div className='header__form-wrapper'>
-                                    <form 
-                                        className='header__form'
-                                        name='search'
-                                        onSubmit={handleSearch}
-                                    >
-                                        <input 
-                                            className='form__input header__form-input'
-                                            name='search'
-                                            value = {state.search}
-                                            onChange={changeSearch}
-                                            placeholder='Что же вы хотите найти'
-                                        /> 
-                                        <button
-                                            type='submit'
-                                            className='button form__button header__form-button'
-                                        >
-                                            Искать
-                                        </button>
-                                    </form>    
+                                    <SearchForm 
+                                        handleInput={changeSearch}
+                                        handleSubmit={handleSearch}
+                                        value={state.search}
+                                        prefix='header'
+                                    /> 
                                 </div>
                             }
                         </header>
