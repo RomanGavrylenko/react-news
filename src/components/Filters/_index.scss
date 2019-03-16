@@ -15,15 +15,21 @@
     &__count-block{
         display: flex;
         justify-content: center;
+
+        @media screen and (min-width: 768px) and (max-width: 991.99px){
+            flex-direction: column;
+        }
     }
 
     &__count-button {
         display: block;
         padding: 20px;
         background: $primary-color;
+
         &_active {
             background: $active-color;
-        } 
+        }
+        
     }
 
     //category block

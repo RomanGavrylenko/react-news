@@ -60,6 +60,7 @@ export default class WeatherPage extends React.Component{
                                         handleSubmit={handleSubmit}
                                         value={place}
                                         prefix='weather-page'
+                                        placeholder='Введите интересующий вас город'
                                     />
                                 </div>
                                 <h3 className='text weather-page__title'>
