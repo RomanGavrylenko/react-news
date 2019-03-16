@@ -46,6 +46,7 @@
     &__menu-icon {
         margin-left: 30px;
         cursor: pointer;
+        width: 50%;
 
         @media screen and (min-width: 768px ){
             display: none;
@@ -62,7 +63,21 @@
             padding: 5px 15px;
             background: white;
             border-radius: 5px;
+
+            @media screen and (max-width: 767.99px){
+                position: relative;
+                top: 15px;
+                left: 40px;
+            }
+
+            @media screen and (max-width: 420px){
+                left: 15px;
+            }
            
+        }
+
+        @media screen and (max-width: 767.99px){
+            text-align: right;
         }
     }
 

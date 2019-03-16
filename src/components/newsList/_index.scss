@@ -9,6 +9,28 @@
     
 }
 
+//for title at mobile and tablet
+
+.news-list__title_mobile {
+    text-align: center;
+    display: none;
+
+    @media screen and (max-width: 767.99px){
+        display: block;
+        margin: 30px 0;
+    }
+}
+
+//nothing found styles
+
+.news-list__nothing {
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 40px;
+    min-height: 500px;
+}
+
 .news-card {
 
     //styles for img at news

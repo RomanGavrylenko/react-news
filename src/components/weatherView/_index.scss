@@ -1,5 +1,8 @@
 .weather {
 
+    margin-bottom: 30px;
+
+
     &__city {
         cursor: pointer;
     }
@@ -10,6 +13,31 @@
        display: flex;
        justify-content: space-between;
        align-items: center;
+    }
+
+    //styles for weather-search-form
+
+    &__form-input {
+
+        width: 80%;
+
+        @media screen and (max-width: 991.99px) and (min-width: 768px){
+            width:100%;
+           
+        }
+
+        @media screen and (max-width: 767.99px){
+            width:90%;
+        }
+        
+    }
+
+    &__button {
+
+        @media screen and (max-width: 991.99px) and (min-width: 768px){
+            width:100%;
+            text-align: center;
+        }
     }
 
     //position img to vertical center

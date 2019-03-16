@@ -14,7 +14,7 @@
     }
 
     &__wrapper{
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
 
     &__body{
@@ -23,6 +23,11 @@
         align-items: center;
         border: 1px solid $grey-color;
         background: rgba(228, 215, 158, 0.5);
+        
+
+        &_even {
+            background: rgba(190, 169, 75, 0.5);
+        }
 
         @media screen and (max-width: 600px){
             flex-direction: column;

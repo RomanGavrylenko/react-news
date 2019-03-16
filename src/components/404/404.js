@@ -5,7 +5,7 @@ export default function Page404(props){
     return(
         <div className='container'>
             <h3 className='text-center'>Извините, но такой страницы нет</h3>
-            <p className='text-center'>
+            <p className='text-center nothing'>
                 <Link  
                     to='/'
                 >

@@ -6,9 +6,12 @@ import WeatherPortal from '../../portals/weatherPortal/weatherPortal';
 export default class WeatherPage extends React.Component{
     
 
-    getWeatherTable(item){
+    getWeatherTable(item, i){
+
+        let cls = i%2 == 0 ? 'weather-page__body_even' : '';
+    
         return( 
-            <div className='weather-page__body'>
+            <div className={`weather-page__body ${cls}`}>
                     <div className='weather-page__date col text'>
                         {item.dateTimeText}
                     </div>
@@ -59,10 +62,13 @@ export default class WeatherPage extends React.Component{
                                         prefix='weather-page'
                                     />
                                 </div>
+                                <h3 className='text weather-page__title'>
+                                    Прогноз на 5 дней
+                                </h3>
                                 <div className='row'>
                                     <div className='weather-page__wrapper col-9'>
                                         {
-                                            five.map(item=>this.getWeatherTable(item))
+                                            five.map((item, i)=>this.getWeatherTable(item,i))
                                         }
                                     </div>
                                 </div>

@@ -11,9 +11,14 @@
 @import './components/weather/weather-page';
 @import './portals/weatherPortal/weather-portal';
 @import './portals/mobileMenu/menu-portal';
+@import './components/footer/footer';
 
 .text{
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+.nothing {
+    height: 40vh;
 }
 
 .link {
@@ -44,5 +49,9 @@
         padding: 12px 10px;
         border-radius: 5px;
     }
+}
+
+.content-wrapper {
+   border: 1px solid rgba($color: #000000, $alpha: 0.3)
 }
 

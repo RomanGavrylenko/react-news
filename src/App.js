@@ -9,6 +9,7 @@ import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import WeatherPage from './components/weather/weatherPage';
 import Page404 from './components/404/404';
 import {NewsStore} from './context-files/news-context';
+import Footer from './components/footer/footer';
 
 import 'bootstrap/scss/bootstrap.scss';
 import './index.scss';
@@ -66,7 +67,7 @@ class App extends Component {
               <Route exect path='/weather' component={WeatherPage} />
               <Route component={Page404} />
             </Switch>
-            
+            <Footer />
           </div>
           </NewsStore>
         </BrowserRouter>

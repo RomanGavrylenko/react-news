@@ -16,9 +16,9 @@ export default function WeatherWidgetView(props){
                             >
                                 {weather.city}
                             </h3>
+                            
                             {// показать блок с полем для ввода нового города
-                            }
-                            {showInput && 
+                             showInput && 
                                 <SearchForm 
                                     handleSubmit={handleSubmit}
                                     handleInput = {handleInput}
