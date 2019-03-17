@@ -24,19 +24,20 @@ export default class NewsList extends React.Component{
     }
 
     render(){
+
+        const {state} = this.context;
+
         return(
-            <NewsContext.Consumer>
-                {(({state})=>{
-                    return(
-                    <div className='news-list__wrapper'>
-                        <h3 className='news-list__title_mobile'>News</h3>
-                        {this.getNews(state.data)}
-                    </div>);
-                })}
-            </NewsContext.Consumer>
+            <div className='news-list__wrapper'>
+                <h3 className='news-list__title_mobile'>News</h3>
+                {this.getNews(state.data)}
+            </div> 
+            
         );
     }
 }
+
+NewsList.contextType = NewsContext;
 
 NewsList.propTypes ={
     data: PropTypes.arrayOf(PropTypes.object).isRequired,

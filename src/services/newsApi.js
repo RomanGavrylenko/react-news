@@ -26,7 +26,6 @@ export async function getNews(top=true ,category = '', count=20, country='ua'){
             }
         });
 
-        console.log('getMainNews - ',mainNews);
         return mainNews.articles;
     } catch(e){
         console.log(e);

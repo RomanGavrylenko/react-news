@@ -28,7 +28,7 @@
     font-size: 30px;
     text-align: center;
     margin-top: 40px;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .news-card {
@@ -47,12 +47,6 @@
     &__img {
         background: $grey-color;
         height: 100%;
-
-
-        &_reserve {
-            z-index: -1;
-        }
-        
     }
 
     //styles for text-block
