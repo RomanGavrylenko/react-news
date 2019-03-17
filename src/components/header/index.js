@@ -16,9 +16,21 @@ class Header extends React.Component {
         openMobMenu: false
     }
 
-    handleMobileMenu = ()=>{
+    handleClose = ()=>{
+
+        document.removeEventListener('click', this.handleClose);
+
+        this.setState({
+            openMobMenu: false
+        })
+    }
+
+    handleOpen = ()=>{
+
+        document.addEventListener('click', this.handleClose);
+
         this.setState(state=>({
-            openMobMenu: !state.openMobMenu
+            openMobMenu: true
         }));
     }
 
@@ -40,7 +52,7 @@ class Header extends React.Component {
                                 { !this.state.openMobMenu &&
                                     <div 
                                         className='header__menu-icon'
-                                        onClick={this.handleMobileMenu}
+                                        onClick={this.handleOpen}
                                     >
                                         <FontAwesomeIcon icon={faBars}  size='2x' />
                                     </div>
@@ -66,7 +78,7 @@ class Header extends React.Component {
                                 this.state.openMobMenu && 
                                 <MenuMobile 
                                     items={this.props.items}
-                                    close={this.handleMobileMenu}
+                                    close={this.handleClose}
                                 />
                             }
                         </header>

@@ -5,6 +5,7 @@ import WeatherPage from './components/weather/weatherPage';
 import Page404 from './components/404/404';
 import {NewsStore} from './context-files/news-context';
 import Footer from './components/footer/footer';
+import UpButton from './portals/up-button/up-button';
 
 import 'bootstrap/scss/bootstrap.scss';
 import './index.scss';
@@ -34,6 +35,7 @@ function App(props){
               <Route component={Page404} />
             </Switch>
             <Footer />
+            <UpButton scrollStepInPx="50" delayInMs="16.66"/>
           </div>
           </NewsStore>
         </BrowserRouter>
