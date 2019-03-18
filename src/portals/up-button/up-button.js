@@ -8,8 +8,30 @@ export default class UpButton extends React.Component {
         super();
     
         this.state = {
-            intervalId: 0
+            intervalId: 0,
+            scrolled: false
         };
+    }
+
+    componentDidMount(){
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = ()=>{
+        let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        if(scrolled>50){
+            this.setState({
+                scrolled: true
+            })
+        } else {
+            this.setState({
+                scrolled: false
+            })
+        }
     }
     
     scrollStep() {
@@ -28,7 +50,7 @@ export default class UpButton extends React.Component {
     render(){
         return(
             ReactDOM.createPortal(
-                <div className='up-button__wrapper'>
+                <div className='up-button__wrapper' hidden={!this.state.scrolled}>
                     <button className='up-button button' onClick={this.scrollToTop}>
                         <FontAwesomeIcon 
                             icon={faArrowUp}
