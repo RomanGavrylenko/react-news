@@ -1,6 +1,7 @@
 import React from 'react';
 import newsImg from '../../news.jpg';
-
+import {isVisible, showVisible} from './lazy-image-load';
+ 
 export default class SingleNews extends React.Component{
     constructor(props){
         super(props);
@@ -10,6 +11,12 @@ export default class SingleNews extends React.Component{
 
     handleImg = ()=>{
         this.image.current.src = newsImg;
+    }
+
+    componentDidMount(){
+        document.addEventListener('scroll', ()=>{
+            showVisible();
+        })
     }
 
     render(){
@@ -22,7 +29,8 @@ export default class SingleNews extends React.Component{
                 <figure className='news-card__picture'>
                     
                     <img
-                        src={urlToImage}
+                        
+                        data-src={urlToImage}
                         className='news-card__img img-fluid'
                         alt=''
                         onError = {this.handleImg}
@@ -52,4 +60,3 @@ export default class SingleNews extends React.Component{
         );
     }
 }
-
