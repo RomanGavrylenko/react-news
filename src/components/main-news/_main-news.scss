@@ -1,0 +1,90 @@
+.main-news {
+
+    @include make-container();
+    @include make-container-max-widths();
+
+    //убираем отступы на дисплее менее 576px
+
+    @include media-breakpoint-down(xs){
+        padding: 0;
+    }
+
+
+
+    &__wrapper{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2em; 
+
+        @media screen and (max-width: 575.99px){
+            flex-direction: column;
+        }
+    }
+
+    //изображения
+
+    &__picture {
+        display: block;
+        overflow: hidden;
+        flex-basis: 350px;
+       
+        margin: auto 0
+    }
+
+    &__image {
+        display: block;
+        width: 350px;
+        height: 350px;
+        margin: auto;
+    }
+
+    //блок с информацией
+
+    &__info {
+        margin-left: 3em;
+        width: 300px;
+        text-align: justify;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        &-text {
+            margin-bottom: 10px;
+        }
+
+        @include media-breakpoint-down(xs){
+            margin: 0 auto 50px;
+            width: auto;
+        }
+    }
+
+    &__link {
+        border: 3px solid $primary-color;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: center;
+
+        &:hover {
+            background: $primary-color-hover;
+        }
+    }
+
+    //кнопки переключения слайдера
+
+    &__buttons {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        
+
+        @include media-breakpoint-down(xs){
+            left: 30%;
+        }
+
+        &-item {
+            cursor: pointer;
+        }
+    }
+}

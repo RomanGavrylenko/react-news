@@ -1,0 +1,29 @@
+.item-list {
+    list-style: none;
+    background: $white-color;
+    padding: 10px;
+    margin-top: 1em;
+    border-radius: 5px;
+
+    &__single {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        border-radius: 5px;
+        transition: 0.5s;
+
+        padding: 10px;
+        border: 2px solid $primary-color-hover;
+        margin: 5px 0;
+        
+        cursor: pointer;
+
+        &:hover {
+            background: $primary-color-opacity;
+        }
+    }
+
+    &__title {
+        margin-top: 2em;
+    }
+}

@@ -21,7 +21,16 @@ $container-max-widths: (
   xl: 1170px
 );
 
-$primary-color: #A4BFF7;
+$bg-color: #A5C4FA;
+
+
+$primary-color: #327ED2;
+$primary-color-hover: #729FD2;
+$primary-color-opacity: rgba(114,159,210, 0.5);
+
+$white-color: #ffffff;
+
+$primary-color-rgb: rgba(164,191,247, 0.4);
 $active-color: #88F75C;
 $grey-color: rgb(157, 157, 157);
 $light-grey-color: rgba(157, 157, 157, 0.2);

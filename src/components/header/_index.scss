@@ -1,8 +1,15 @@
 .header{
+    
+    @include make-container(0);
+    @include make-container-max-widths();
 
     margin-bottom: 25px;
     box-shadow: 0px 0px 5px 3px rgba($color: #000000, $alpha: 0.3);
-    padding-bottom: 20px;
+    background: $white-color;
+    border-radius:  5px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
     
 
     &__nav {

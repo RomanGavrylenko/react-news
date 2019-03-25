@@ -1,8 +1,7 @@
-import React from 'react';
+/*import React from 'react';
 import UserProfile from '../../container/userProfile';
-import toggleOpen from '../../HOC/toggleOpen';
 
-function UserProfileWidgetView(props){
+export default function UserProfileWidgetView(props){
     return(
         <UserProfile>
             {({user})=>{
@@ -34,6 +33,4 @@ function UserProfileWidgetView(props){
             }
         </UserProfile>
     );
-}
-
-export default toggleOpen(UserProfileWidgetView);
+}*/

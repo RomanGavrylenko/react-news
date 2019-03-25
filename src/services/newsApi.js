@@ -12,13 +12,11 @@ const HEADER = {
  * country - to show which country news. Now it`s default and ua only 
 */
 
-export async function getNews(top=true ,category = '', count=20, country='ua'){
+export async function getNews(category = ''){
     try{
         let addCategory= category ?  `&category=${category}` : '';
-        let isTop = top ? `top-headlines` : `everything`;
-        let pageSize = `&pageSize=${count}`;
 
-        const url = `${BASE_URL}${isTop}?country=${country}${addCategory}${pageSize}`
+        const url = `${BASE_URL}top-headlines?country=ua${addCategory}&pageSize=10`
 
         let mainNews = await makeRequest(url, {
             headers: {
