@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemList from '../components/item-list/item-list';
 import ItemDetails from '../components/item-details/item-details';
+import ErrorBoundry from '../error-boundry/error-boundry';
 
 function CategoryLayout({news, chooseInd, ind, name, children, getName, itemName, accordionOpen, accordionOpenTitle}){
         
@@ -15,6 +16,7 @@ function CategoryLayout({news, chooseInd, ind, name, children, getName, itemName
                 </h3>
                 { accordionOpenTitle === name &&
                     <div className='category-layout__content'>
+                        <ErrorBoundry>
                         <div className='category-layout__part category-layout__part_left'>
                             <ItemList 
                                 data={news}
@@ -27,6 +29,7 @@ function CategoryLayout({news, chooseInd, ind, name, children, getName, itemName
                                 {children}
                             </ItemDetails>
                         </div>
+                        </ErrorBoundry>
                     </div>  
                 }  
             </div>
