@@ -8,7 +8,7 @@ export default function WithData(Component, getData, dataType={}){
         state={
             news:null,
             loaded: false,
-            ind: 2
+            ind: null
         }
 
         async componentDidMount(){
