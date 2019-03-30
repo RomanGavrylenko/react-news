@@ -6,7 +6,7 @@ import Preload from '../components/Preload/preload';
 export default function WithData(Component, getData, dataType={}){
     return class GetData extends React.Component {
         state={
-            news:null,
+            data:null,
             loaded: false,
             ind: null
         }
@@ -15,7 +15,7 @@ export default function WithData(Component, getData, dataType={}){
             try{
                 let data = await getData(dataType.link);
                 this.setState({
-                    news: data,
+                    data,
                     loaded: true
                 });
             } catch(e){

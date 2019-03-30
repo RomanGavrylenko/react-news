@@ -3,9 +3,9 @@ import ItemDetails from '../components/item-details/item-details';
 import Field from '../components/field/field';
 import Image from '../components/image/image';
 
-export default function UserDetails({users}){
+export default function UserDetails(props){
 
-    return  <ItemDetails data={users}>
+    return  <ItemDetails {...props}>
                 <Image fieldName='photo' label='ava'/>
                 <Field fieldName='name'/>
                 <Field fieldName='position'/>

@@ -3,9 +3,9 @@ import ItemDetails from '../components/item-details/item-details';
 import Field from '../components/field/field';
 import Link from '../components/link/link';
 
-export default function EntertaimentDetails({news}){
+export default function EntertaimentDetails(props){
 
-    return  <ItemDetails data={news}>
+    return  <ItemDetails {...props}>
                 <Field fieldName='title'/>
                 <Field fieldName='description'/>
                 <Link 
