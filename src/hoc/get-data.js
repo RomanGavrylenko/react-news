@@ -1,6 +1,8 @@
 import React from 'react';
 import Preload from '../components/Preload/preload';
 
+//to get data for our sections. Variable data retrieval function
+
 export default function WithData(Component, getData, dataType={}){
     return class GetData extends React.Component {
         state={
@@ -10,11 +12,15 @@ export default function WithData(Component, getData, dataType={}){
         }
 
         async componentDidMount(){
-            let data = await getData(dataType.link);
-            this.setState({
-                news: data,
-                loaded: true
-            });
+            try{
+                let data = await getData(dataType.link);
+                this.setState({
+                    news: data,
+                    loaded: true
+                });
+            } catch(e){
+                console.log(e);
+            }
         }
 
         chooseInd = (ind)=>{
