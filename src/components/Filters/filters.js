@@ -12,7 +12,7 @@ class Filters extends React.Component{
         const arr = [10,20,50];
         let countList = arr.map(num=>{
             let cls;
-            if(num == count) {
+            if(num === count) {
                 cls = 'filters__count-button button filters__count-button_active';
             } else {
                 cls = 'filters__count-button button';
@@ -40,7 +40,7 @@ class Filters extends React.Component{
 
         let categoryList = items.map(item=>{
             let cls;
-            if(item.attr == category) {
+            if(item.attr === category) {
                 cls = 'filters__category-item filters__category-item_active text';
             } else {
                 cls = 'filters__category-item text';

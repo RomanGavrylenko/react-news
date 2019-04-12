@@ -1,6 +1,6 @@
 export function getWindDirection(deg){
     let direction;
-    if(deg >= 337.5 && deg <= 360 || deg<=22.5 ) {
+    if((deg >= 337.5 && deg <= 360) || deg<=22.5 ) {
         direction = 'C';
     } else if (deg>22.5 && deg<=67.5){
         direction = 'CВ';

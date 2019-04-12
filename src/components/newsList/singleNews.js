@@ -1,6 +1,7 @@
 import React from 'react';
 import newsImg from '../../news.jpg';
-import {isVisible, showVisible} from './lazy-image-load';
+import { showVisible } from './lazy-image-load';
+import preload from '../../images/preload.svg'
  
 export default class SingleNews extends React.Component{
     constructor(props){
@@ -29,7 +30,7 @@ export default class SingleNews extends React.Component{
                 <figure className='news-card__picture'>
                     
                     <img
-                        
+                        src = {preload}
                         data-src={urlToImage}
                         className='news-card__img img-fluid'
                         alt=''
@@ -49,8 +50,8 @@ export default class SingleNews extends React.Component{
                     </p>
                     <a 
                         href={url} 
-                        rel="nofollow noopener"
                         target='_blank'
+                        rel="noopener noreferrer"
                         className='link news-card__link'
                     >
                         Подробнее

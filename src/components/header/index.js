@@ -2,7 +2,6 @@ import React from 'react';
 import toggleOpen from '../../HOC/toggleOpen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBars } from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom';
 import {NewsContext} from '../../context-files/news-context';
 import SearchForm from '../search-form/search-form';
 import Menu from '../menu/menu';

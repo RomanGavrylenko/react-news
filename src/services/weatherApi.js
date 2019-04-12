@@ -9,9 +9,9 @@ export async function getCity(){
         let cityList = await makeRequest('localhost:3000/city.list.json');
         console.log(cityList)
         let uaCity = cityList.filter(city=>{
-            if(city['country'] !== 'ua') return;
+            if(city['country'] !== 'ua') return false;
 
-            return city;
+            return true;
         });
 
         return uaCity;

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'; 
 import {getNews, searchNews} from '../services/newsApi';
 
 export const NewsContext = React.createContext({});

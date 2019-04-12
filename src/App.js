@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './components/header';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import WeatherPage from './components/weather/weatherPage';

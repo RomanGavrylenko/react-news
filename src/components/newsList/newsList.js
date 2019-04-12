@@ -9,7 +9,7 @@ export default class NewsList extends React.Component{
 
     getNews(data){
         
-        if(data.length == 0){
+        if(data.length === 0){
             return <p className='news-list__nothing text'>
             Извините, ничего не найдено, посему нечего отображать.
             Введите другой поисковой запрос или перейдите в одну из категорий

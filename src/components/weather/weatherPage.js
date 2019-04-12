@@ -8,7 +8,7 @@ export default class WeatherPage extends React.Component{
 
     getWeatherTable(item, i){
 
-        let cls = i%2 == 0 ? 'weather-page__body_even' : '';
+        let cls = i%2 === 0 ? 'weather-page__body_even' : '';
     
         return( 
             <div className={`weather-page__body ${cls}`}>

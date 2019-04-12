@@ -1,29 +1,26 @@
 export function isVisible(elem) {
+  let coords = elem.getBoundingClientRect();
 
-    var coords = elem.getBoundingClientRect();
+  let windowHeight = document.documentElement.clientHeight;
 
-    var windowHeight = document.documentElement.clientHeight;
+  // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
+  let topVisible = coords.top > 0 && coords.top < windowHeight;
+  let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
-    // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
-    var topVisible = coords.top > 0 && coords.top < windowHeight;
-    var bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
-
-    return topVisible || bottomVisible;
-  }
+  return topVisible || bottomVisible;
+}
 
 export function showVisible() {
-    var imgs = document.getElementsByTagName('img');
-    for (var i = 0; i < imgs.length; i++) {
+  let imgs = document.querySelectorAll('img');
 
-      var img = imgs[i];
+  for(let img of imgs){
+    let realsrc = img.getAttribute('data-src');
+    if (!realsrc) continue;
 
-      var realsrc = img.getAttribute('data-src');
-      if (!realsrc) continue;
-
-      if (isVisible(img)) {
-        img.src = realsrc;
-        img.setAttribute('data-src', '');
-      }
+    if (isVisible(img)) {
+      img.src = realsrc;
+      img.dataset.src = '';
     }
+  }
 }
 

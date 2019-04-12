@@ -13,6 +13,7 @@ function UserProfileWidgetView(props){
                                     className='user-widget__img'
                                     src = {user.photo}
                                     onClick = {props.toggleOpen}
+                                    alt='user'
                                 />
                             </figure>
                             { props.isOpen &&
