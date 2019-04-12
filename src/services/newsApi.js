@@ -14,11 +14,23 @@ const HEADER = {
 
 export async function getNews(category = ''){
     try{
+        //create url
+        let some = new URL(`${BASE_URL}top-headlines`);
+        if(category){
+            some.searchParams.set('category', category);
+        }
+        
+        some.searchParams.set('country', 'ua');
+        some.searchParams.set ('pageSize', 10);
+        
+       
+       
+
         let addCategory= category ?  `&category=${category}` : '';
 
-        const url = `${BASE_URL}top-headlines?country=ua${addCategory}&pageSize=10`
-
-        let mainNews = await makeRequest(url, {
+       // const url = `${BASE_URL}top-headlines?country=ua${addCategory}&pageSize=10`
+        
+        let mainNews = await makeRequest(some, {
             headers: {
                 ...HEADER
             }
@@ -33,10 +45,14 @@ export async function getNews(category = ''){
 
 export async function searchNews(phrase, count=20){
     try{
-        let q = `q=${phrase}`;
+
+        let url = new URL(new URL(`${BASE_URL}everything`))
+        url.searchParams.set('q', phrase);
+        url.searchParams.set('pageSize', count);
+       /* let q = `q=${phrase}`;
         let pageSize = `&pageSize=${count}`;
 
-        let url = `${BASE_URL}everything?${q}${pageSize}`
+        let url = `${BASE_URL}everything?${q}${pageSize}`*/
 
         let data = await makeRequest(url, {
                 headers: {
