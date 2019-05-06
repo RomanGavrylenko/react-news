@@ -12,7 +12,7 @@ const HEADER = {
  * country - to show which country news. Now it`s default and ua only 
 */
 
-export async function getNews(top=true ,category = '', count=20, country='ua'){
+export async function getNews(top=true , category = '', count=20, country='ua'){
     try{
         let addCategory= category ?  `&category=${category}` : '';
         let isTop = top ? `top-headlines` : `everything`;
@@ -50,4 +50,3 @@ export async function searchNews(phrase, count=20){
         console.log(e);
     }
 }
-

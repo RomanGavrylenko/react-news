@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.scss';
+import AppSec from './app-sec'
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppSec />, document.getElementById('root'));
 
 

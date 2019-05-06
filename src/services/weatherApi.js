@@ -27,7 +27,6 @@ export async function getNowWeather(city){
         console.log(weather);
         let temp = getTemp(weather.main.temp);
         
-        
         /*let sunrise = new Date(weather.sys.sunrise*1000).toLocaleTimeString();
         let sunset = new Date(weather.sys.sunset*1000).toLocaleTimeString();*/
 
@@ -57,8 +56,7 @@ export async function getNowWeather(city){
         return info;
     } catch(e){
         console.log(e);
+       
         throw e;
     }
-
-
 }
