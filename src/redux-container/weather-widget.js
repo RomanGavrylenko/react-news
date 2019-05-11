@@ -12,15 +12,17 @@ import compose from '../utils/compose'
 class WeatherWidget extends Component {
 
     state ={
-        place: ''
+        place: '',
+       
     }
 
     //отображение первоначального города
     componentDidMount(){
-        this.props.getWeather('Donetsk');
+        this.props.getWeatherWidget('Donetsk');
 
         this.setState({
-            place: this.props.place
+            place: this.props.place,
+            
         })
     }
 
@@ -28,7 +30,8 @@ class WeatherWidget extends Component {
     componentDidUpdate(prevProps){
         if(prevProps.place !== this.props.place ){
             this.setState({
-                place: this.props.place
+                place: this.props.place,
+                
             })
         }
     }
@@ -40,7 +43,7 @@ class WeatherWidget extends Component {
         console.log('prevProps', this.props.place)
         //this.props.setPlace(this.state.place);
 
-        this.props.getWeather(this.state.place, this.props.place)
+        this.props.getWeatherWidget( this.state.place, this.props.place)
 
         //если город не найден, то ошибка 404 пробрасывается далеше
         // и мы обрабатываем ее здесь
@@ -73,6 +76,7 @@ class WeatherWidget extends Component {
                     submit = {this.handleSubmit}
                     input = {this.handleInput}
                     value = { this.state.place}
+                    error = { this.props.error}
                     modal =  {
                         {show: this.props.modal.show,
                         text: this.props.modal.text,
@@ -87,14 +91,14 @@ const mapStateToPorps = ({ weatherWidgetData }) => ({ ...weatherWidgetData })
 const mapDispatchToProps = ( dispatch, ownProps ) => {
     console.log('second', ownProps)
     return {
-        getWeather : (city, propsCity) => {
-            return dispatch(getWeatherWidget(getNowWeather, city, ownProps.setModal, propsCity)())
+        getWeatherWidget : (city, propsCity) => {
+            return dispatch(getWeatherWidget(getNowWeather, city, ownProps.setModal, propsCity))
         },
         setPlace: (place) => dispatch(setPlace(place))
     }
 }
 export default  compose(
     weatherPlace,
-    connect(mapStateToPorps, mapDispatchToProps)
+    connect(mapStateToPorps, mapDispatchToProps),
 )(WeatherWidget)
 //export default weatherPlace(connect(mapStateToPorps, mapDispatchToProps)(WeatherWidget));

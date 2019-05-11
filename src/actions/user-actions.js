@@ -7,7 +7,7 @@ import BaseDataFunction from './base-action-function';
 
 const { setLoading, setData, setError} = new BaseDataFunction();
 
-export const getUserAction = (getUser) => () => (dispatch) => {
+export const getUserAction = (getUser) => (dispatch) => {
     dispatch(setLoading(FETCH_LOADING_USER));
     getUser()
         .then(user => dispatch(setData( FETCH_SUCCESS_USER, user.user )))

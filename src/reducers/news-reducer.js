@@ -13,32 +13,32 @@ const newsReducer = (state , action ) =>{
     switch(action.type){
         case 'FETCH_NEWS_LOADING':
             return {
-                ...state,
+                ...state.newsData,
                loaded: false
             };
         case 'FETCH_NEWS_SUCCESS': 
             return {
-                ...state,
+                ...state.newsData,
                 loaded: true,
                 data: [...action.payload]
             };
         case 'CHANGE_CATEGORY':
             return {
-                ...state,
+                ...state.newsData,
                 category: action.payload
             };
         case 'CHANGE_COUNT': 
             return {
-                ...state,
+                ...state.newsData,
                 count: action.payload
             };
         case 'CHANGE_SEARCH':
             return {
-                ...state,
+                ...state.newsData,
                 search: action.payload,
                 top: false
             };
-        default: return state
+        default: return state.newsData
     }
 }
 

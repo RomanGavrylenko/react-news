@@ -2,7 +2,7 @@ import BaseDataFunction from './base-action-function';
 
 const { setLoading, setData, setError} = new BaseDataFunction();
 
-export const getNews = (getData,  category='', count = 20) => () => (dispatch) => {
+export const getNewsAction = (getData,  category='', count = 20) => (dispatch) => {
     dispatch(setLoading('FETCH_NEWS_LOADING'))
     
     getData(true, category, count)

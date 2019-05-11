@@ -15,7 +15,7 @@ const userReducers = (state, action) => {
     switch (action.type){
         case FETCH_LOADING_USER:
             return {
-                user: {...state.user},
+                user: {...state.userData.user},
                 loaded: false,
                 error: null,
             }
@@ -27,7 +27,7 @@ const userReducers = (state, action) => {
             }
         case FETCH_ERROR_USER:
             return {
-                user: {...state.user},
+                user: {...state.userData.user},
                 loaded: false,
                 error: action.payload,
             }

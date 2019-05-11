@@ -25,13 +25,12 @@ const initialState = {
 }
 
 const weatherReducer = (state , action ) => {
-    console.log('weatherFirst',state)
     if(state ===undefined) return initialState;
     switch (action.type) {
         case FETCH_LOADING_NOW_WEATHER:
         console.log('weatherLoading',state)
             return {
-                weather: {...state.weather},
+                weather: {...state.weatherWidgetData.weather},
                 error: null,
                 loaded: false,
                 place:  state.place//state.weatherWidgetData ? state.weatherWidgetData.place : initialState.place,
@@ -39,7 +38,7 @@ const weatherReducer = (state , action ) => {
         case  FETCH_ERROR_NOW_WEATHER: 
             console.log('weatherError',state)
             return {
-                weather: {},
+                weather: {...state.weatherWidgetData.weather},
                 error: action.payload,
                 loaded: true,
                 place:  state.place//state.weatherWidgetData ? state.weatherWidgetData.place : initialState.place,
@@ -55,7 +54,7 @@ const weatherReducer = (state , action ) => {
         case SET_DATA_PLACE: 
         console.log('weatherSet',state)
             return {
-                ...state,
+                ...state.weatherWidgetData,
                 place: action.payload
             }
         default: return state.weatherWidgetData

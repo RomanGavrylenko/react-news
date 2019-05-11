@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  * as newsAction  from '../actions/news-action';
+import  { getNewsAction }  from '../actions/news-action';
 import { getNews, searchNews} from '../services/newsApi';
 import NewsView from '../redux-component/news-view';
 import {bindActionCreators} from 'redux'
@@ -35,13 +35,9 @@ const props = ({ newsData }) => ({...newsData});
 
 
 const mapDispatchToProps = (dispatch) => {
-
-    const { getNews } = bindActionCreators(newsAction, dispatch);
-
     return {
-        getNewsAction: (getData, cat, count) => dispatch(newsAction.getNews(getData, cat, count)())
-       
+        getNewsAction: bindActionCreators(getNewsAction, dispatch)
     }
 }
 
-export default connect(props, mapDispatchToProps)(NewsContainer);
+export default connect(props, {getNewsAction} )(NewsContainer);
