@@ -13,29 +13,25 @@ export const getUserAction = (getUser) => (dispatch) => {
         .then(user => dispatch(setData( FETCH_SUCCESS_USER, user.user )))
         .catch(err => dispatch(setError( FETCH_ERROR_USER, err)))
 }
-/*export const getUserAction = (getUser) => () => (dispatch) =>{
-    dispatch(beginUserLoad);
-    getUser()
-        .then(user => dispatch(setUser(user.user)))
-        .catch(err => dispatch(setError(err)))
-}
+// export const getUserAction = (getUser) => () => (dispatch) =>{
+//     dispatch(beginUserLoad);
+//     getUser()
+//         .then(user => dispatch(setUser(user.user)))
+//         .catch(err => dispatch(setError(err)))
+// }
 
-const setUser = (user) => {
+export const setUserAction = (user) => {
     return {
         type: FETCH_SUCCESS_USER,
         payload: user
     }
 }
 
-const setError = (err) => {
+export const setErrorAction = (err) => {
     return {
         type: FETCH_ERROR_USER,
         payload: err
     }
 }
 
-const beginUserLoad = () =>{
-    return {
-        type: FETCH_LOADING_USER,
-    }
-}*/
+export const beginUserLoadAction = () =>({type: FETCH_LOADING_USER})

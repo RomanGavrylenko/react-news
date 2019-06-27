@@ -9,6 +9,8 @@ import WeatherWidget from './redux-container/weather-widget'
 import NewsContainer from './redux-container/news';
 import NewsFilterContainer from './redux-container/news-filter';
 
+let start = store();
+
 const items = [
     {name:'Главная', attr: ''},
     {name: "Бизнес", attr: 'business'},
@@ -22,12 +24,13 @@ export default function AppSecond(){
 
 
     return (
-        <Provider store={store}>
-            
-            <UserProfileContainer />
-            <WeatherWidget />
+        <Provider store={start}>
+            <div>
+                <UserProfileContainer />
+            </div>
+             {/* <WeatherWidget /> */}
             <NewsFilterContainer items={items}/>
-            <NewsContainer />
+            <NewsContainer /> 
         </Provider>
     );
 }

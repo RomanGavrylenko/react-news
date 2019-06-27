@@ -30,3 +30,13 @@ export const changeSearch = (q) =>{
         payload: q
     }
 }
+
+export const SagaActionNews = (category, count) => {
+    return {
+        type: "FETCH_NEWS_LOADING",
+        payload: {
+            category, 
+            count
+        }
+    }
+}
